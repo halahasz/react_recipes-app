@@ -12,12 +12,14 @@ class Search extends Component {
     });
   };
 
+  onFormSubmit = (e, phrase) => {
+    e.preventDefault();
+    this.props.onFormSubmit(this.state.phrase);
+  };
+
   render() {
     return (
-      <form
-        className="form"
-        onSubmit={e => this.props.onFormSubmit(e, this.state.phrase)}
-      >
+      <form className="form" onSubmit={this.onFormSubmit}>
         <label className="search-bar__label">{this.props.label}</label>
         <input
           className="input"
@@ -26,7 +28,7 @@ class Search extends Component {
           placeholder="Search"
           type="text"
         />
-        <div>Result word is: {this.state.pharse}</div>
+        <div>Result word is: {this.state.phrase}</div>
       </form>
     );
   }

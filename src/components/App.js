@@ -22,14 +22,11 @@ class App extends React.Component {
       recipes: response.data.results
     });
   };
-  onFormSubmit = (e, phrase) => {
-    e.preventDefault();
-    this.fetchRecipes(phrase);
-  };
+
   render() {
     return (
       <div>
-        <Search label="Search recipes:" onFormSubmit={this.onFormSubmit} />
+        <Search label="Search titles:" onFormSubmit={this.fetchRecipes} />
         <p>Found {this.state.recipes.length} recipes</p>
         <RecipeList recipes={this.state.recipes} />
       </div>
