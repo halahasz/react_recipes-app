@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Recipe from "./Recipe";
 
-export default class RecipeList extends Component {
+class RecipeList extends Component {
   render() {
     return (
       <div>
@@ -14,3 +14,5 @@ export default class RecipeList extends Component {
     );
   }
 }
+
+export default RecipeList;

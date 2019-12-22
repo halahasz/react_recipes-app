@@ -4,7 +4,7 @@ import "./RecipeList.css";
 import Search from "./Search";
 import recipes from "../API/recipepuppy";
 
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     recipes: []
   };
@@ -29,10 +29,12 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <Search onFormSubmit={this.onFormSubmit} />
+        <Search label="Search recipes:" onFormSubmit={this.onFormSubmit} />
         <p>Found {this.state.recipes.length} recipes</p>
         <RecipeList recipes={this.state.recipes} />
       </div>
     );
   }
 }
+
+export default App;

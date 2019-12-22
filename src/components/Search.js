@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Search.css";
 
-export default class Search extends Component {
+class Search extends Component {
   state = {
     phrase: ""
   };
@@ -18,6 +18,7 @@ export default class Search extends Component {
         className="form"
         onSubmit={e => this.props.onFormSubmit(e, this.state.phrase)}
       >
+        <label className="search-bar__label">{this.props.label}</label>
         <input
           className="input"
           value={this.state.phrase}
@@ -25,7 +26,10 @@ export default class Search extends Component {
           placeholder="Search"
           type="text"
         />
+        <div>Result word is: {this.state.pharse}</div>
       </form>
     );
   }
 }
+
+export default Search;
