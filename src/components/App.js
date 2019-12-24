@@ -12,12 +12,14 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchRecipes();
   }
-  fetchRecipes = async phrase => {
+  fetchRecipes = async (ingredients, title) => {
     const response = await recipes.get("/", {
       params: {
-        i: phrase
+        i: ingredients,
+        q: title
       }
     });
+    console.log(response);
     this.setState({
       recipes: response.data.results
     });
@@ -26,7 +28,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Search label="Search titles:" onFormSubmit={this.fetchRecipes} />
+        <Search
+          labels={["Search titles:", "Search ingredients:"]}
+          onFormSubmit={this.fetchRecipes}
+        />
         <p>Found {this.state.recipes.length} recipes</p>
         <RecipeList recipes={this.state.recipes} />
       </div>
