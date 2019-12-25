@@ -3,6 +3,7 @@ import RecipeList from "./RecipeList";
 import "./RecipeList.css";
 import Search from "./Search";
 import recipes from "../API/recipepuppy";
+import "./App.css";
 
 class App extends React.Component {
   state = {
@@ -49,17 +50,30 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ minHeight: "100px" }}>
-        <Search
-          labels={["titles:", "ingredients:"]}
-          onFormSubmit={this.fetchRecipes}
-        />
-        <p>
-          Results for: {this.state.title} {this.state.ingredients}
-        </p>
-        <p>Found {this.state.recipes.length} recipes</p>
+      <div className="app">
+        <header>
+          <div className="header-container">
+            <Search
+              labels={["titles:", "ingredients:"]}
+              onFormSubmit={this.fetchRecipes}
+            />
+            <div className="results">
+              <p>
+                Results for title: <span>{this.state.title}</span> ingredients:
+                <span>{this.state.ingredients}</span>
+              </p>
+              <p className="results__found">
+                Found {this.state.recipes.length} recipes
+              </p>
+            </div>
+          </div>
+        </header>
         <RecipeList recipes={this.state.recipes} />
-        <button type="button" onClick={this.fetchMoreRecipes}>
+        <button
+          className="form__button"
+          type="button"
+          onClick={this.fetchMoreRecipes}
+        >
           See more
         </button>
       </div>

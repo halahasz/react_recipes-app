@@ -30,27 +30,25 @@ class Search extends Component {
   render() {
     return (
       <form className="form" onSubmit={this.onFormSubmit}>
-        <label className="search-bar__label">
-          Search {this.props.labels[0]}
-        </label>
+        <label>Search {this.props.labels[0]}</label>
         <input
-          className="input"
+          className="form__input"
           value={this.state.title}
           onChange={this.onTitleInputChange}
           placeholder="Search"
           type="text"
         />
-        <label className="search-bar__label">
-          Search {this.props.labels[1]}
-        </label>
+        <label>Search {this.props.labels[1]}</label>
         <input
-          className="input"
+          className="form__input"
           value={this.state.ingredients}
           onChange={this.onIngredientsInputChange}
           placeholder="Search"
           type="text"
         />
-        <button type="submit">Submit</button>
+        <button className="form__button" type="submit">
+          Submit
+        </button>
       </form>
     );
   }
