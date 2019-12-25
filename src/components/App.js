@@ -68,14 +68,16 @@ class App extends React.Component {
             </div>
           </div>
         </header>
-        <RecipeList recipes={this.state.recipes} />
-        <button
-          className="form__button"
-          type="button"
-          onClick={this.fetchMoreRecipes}
-        >
-          See more
-        </button>
+        <main>
+          <RecipeList recipes={this.state.recipes} />
+          <button
+            className="form__button more"
+            type="button"
+            onClick={this.fetchMoreRecipes}
+          >
+            See more
+          </button>
+        </main>
       </div>
     );
   }

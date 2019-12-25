@@ -24,8 +24,8 @@
 }
 
 .form__button {
-  background-color: #00c292;
-  padding: 5px 15px;
+  background-color: #e7b688;
+  padding: 8px 20px;
   border-radius: 3px;
   border: none;
   color: #fff;
@@ -38,9 +38,13 @@
 .form__button:hover {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: #00c292;
+  color: #e7b688;
 }
 .form__button:active,
 .form__button:focus {
   outline: none;
+}
+.form__button.more {
+  margin: 10px auto;
+  display: block;
 }
