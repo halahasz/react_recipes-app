@@ -5,7 +5,12 @@ class Recipe extends Component {
   render() {
     const { title, href, thumbnail, ingredients } = this.props;
     return (
-      <div className="recipe">
+      <a
+        href={href}
+        className="recipe"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <div className="recipe__content">
           {thumbnail ? (
             <div
@@ -31,7 +36,7 @@ class Recipe extends Component {
             </p>
           </div>
         </div>
-      </div>
+      </a>
     );
   }
 }

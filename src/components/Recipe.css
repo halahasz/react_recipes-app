@@ -1,6 +1,7 @@
 .recipe {
   width: 50%;
   padding: 15px;
+  text-decoration: none;
 }
 .recipe__content {
   padding: 25px;
@@ -29,6 +30,14 @@
   padding-bottom: 10px;
   display: block;
   color: #b4a682;
+  transition: color 0.2s ease-in-out;
+}
+
+.recipe__title:hover {
+  color: #c4745c;
+}
+.recipe__ingredients {
+  color: #41434d;
 }
 .recipe__ingredients span {
   font-size: 1.2rem;

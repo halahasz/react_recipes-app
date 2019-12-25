@@ -10,7 +10,7 @@ class App extends React.Component {
     recipes: [],
     ingredients: "",
     title: "",
-    numberOfPages: 0
+    numberOfPages: 1
   };
 
   componentDidMount() {
@@ -45,6 +45,9 @@ class App extends React.Component {
       recipes: [...this.state.recipes, ...response.data.results],
       numberOfPages
     });
+    if (this.state.recipes.length % 10 !== 0) {
+      document.querySelector(".more").style.display = "none";
+    }
     console.log(response);
   };
 
