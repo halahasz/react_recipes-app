@@ -6,7 +6,10 @@ import recipes from "../API/recipepuppy";
 
 class App extends React.Component {
   state = {
-    recipes: []
+    recipes: [],
+    ingredients: "",
+    title: "",
+    numberOfPages: 0
   };
 
   componentDidMount() {
@@ -21,19 +24,44 @@ class App extends React.Component {
     });
     console.log(response);
     this.setState({
-      recipes: response.data.results
+      recipes: response.data.results,
+      ingredients,
+      title
     });
+  };
+
+  fetchMoreRecipes = async numberOfPages => {
+    numberOfPages = this.state.numberOfPages + 1;
+
+    const response = await recipes.get("/", {
+      params: {
+        i: this.state.ingredients,
+        q: this.state.title,
+        p: numberOfPages
+      }
+    });
+    this.setState({
+      recipes: [...this.state.recipes, ...response.data.results],
+      numberOfPages
+    });
+    console.log(response);
   };
 
   render() {
     return (
-      <div>
+      <div style={{ minHeight: "100px" }}>
         <Search
-          labels={["Search titles:", "Search ingredients:"]}
+          labels={["titles:", "ingredients:"]}
           onFormSubmit={this.fetchRecipes}
         />
+        <p>
+          Results for: {this.state.title} {this.state.ingredients}
+        </p>
         <p>Found {this.state.recipes.length} recipes</p>
         <RecipeList recipes={this.state.recipes} />
+        <button type="button" onClick={this.fetchMoreRecipes}>
+          See more
+        </button>
       </div>
     );
   }

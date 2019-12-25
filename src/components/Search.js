@@ -21,12 +21,18 @@ class Search extends Component {
   onFormSubmit = (e, title, ingredients) => {
     e.preventDefault();
     this.props.onFormSubmit(this.state.ingredients, this.state.title);
+    this.setState({
+      title: "",
+      ingredients: ""
+    });
   };
 
   render() {
     return (
       <form className="form" onSubmit={this.onFormSubmit}>
-        <label className="search-bar__label">{this.props.labels[0]}</label>
+        <label className="search-bar__label">
+          Search {this.props.labels[0]}
+        </label>
         <input
           className="input"
           value={this.state.title}
@@ -34,8 +40,9 @@ class Search extends Component {
           placeholder="Search"
           type="text"
         />
-        <div>Result word is: {this.state.title}</div>
-        <label className="search-bar__label">{this.props.labels[1]}</label>
+        <label className="search-bar__label">
+          Search {this.props.labels[1]}
+        </label>
         <input
           className="input"
           value={this.state.ingredients}
@@ -43,7 +50,6 @@ class Search extends Component {
           placeholder="Search"
           type="text"
         />
-        <div>Result word is: {this.state.ingredients}</div>
         <button type="submit">Submit</button>
       </form>
     );
