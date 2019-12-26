@@ -2,6 +2,7 @@
   width: 50%;
   padding: 15px;
   text-decoration: none;
+  animation: appear 1s ease;
 }
 .recipe__content {
   padding: 25px;
@@ -43,4 +44,15 @@
   font-size: 1.2rem;
   display: block;
   color: #9ea0ac;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    top: 35px;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
 }

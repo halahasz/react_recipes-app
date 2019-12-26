@@ -29,26 +29,36 @@ class App extends React.Component {
       ingredients,
       title
     });
+    if (this.state.recipes.length < 10) {
+      document.querySelector(".more").style.display = "none";
+    } else {
+      document.querySelector(".more").style.display = "block";
+    }
   };
 
   fetchMoreRecipes = async numberOfPages => {
     numberOfPages = this.state.numberOfPages + 1;
-
-    const response = await recipes.get("/", {
-      params: {
-        i: this.state.ingredients,
-        q: this.state.title,
-        p: numberOfPages
+    try {
+      const response = await recipes.get("/", {
+        params: {
+          i: this.state.ingredients,
+          q: this.state.title,
+          p: numberOfPages
+        }
+      });
+      this.setState({
+        recipes: [...this.state.recipes, ...response.data.results],
+        numberOfPages
+      });
+      if (this.state.recipes.length % 10 !== 0 || response.data.results === 0) {
+        document.querySelector(".more").style.display = "none";
+      } else {
+        document.querySelector(".more").style.display = "block";
       }
-    });
-    this.setState({
-      recipes: [...this.state.recipes, ...response.data.results],
-      numberOfPages
-    });
-    if (this.state.recipes.length % 10 !== 0) {
+      console.log(response);
+    } catch {
       document.querySelector(".more").style.display = "none";
     }
-    console.log(response);
   };
 
   render() {
