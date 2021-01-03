@@ -1,0 +1,120 @@
+.modal-container {
+  position: fixed;
+  display: table;
+  height: 100%;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  z-index: 1000;
+}
+.modal-container.active {
+  transform: scale(1);
+}
+.modal-container.active .modal-background {
+  background: rgba(0, 0, 0, 0);
+  animation: fadeIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+.modal-container.active .modal {
+  animation: moveUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+.modal-container.out {
+  animation: quickScaleDown 0.5s linear forwards;
+}
+.modal-container.out .modal-background {
+  animation: fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+.modal-container.out .modal {
+  animation: moveDown 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+.modal-background {
+  display: table-cell;
+  height: 101vh;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  vertical-align: middle;
+}
+.modal-container .modal {
+  transition: all 0.5s ease-in-out;
+  max-width: 650px;
+  overflow-y: auto;
+  max-height: 80vh;
+  background: white;
+  text-align: left;
+  padding: 30px;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+  background-color: #f1f2f7;
+}
+@media screen and (max-width: 450px) {
+  .modal-container .modal {
+    padding: 0;
+  }
+}
+.modal .recipe {
+  width: 100%;
+  animation: none;
+}
+.modal .recipeList {
+  margin-top: 10px;
+}
+.modal-h2 {
+  text-align: center;
+  padding: 15px;
+  margin: 0 auto;
+  max-width: 320px;
+}
+@keyframes fadeOut {
+  0% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+@keyframes quickScaleDown {
+  0% {
+    transform: scale(1);
+  }
+  99.9% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes moveUp {
+  0% {
+    transform: translateY(1000px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes moveDown {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(1000px);
+  }
+}

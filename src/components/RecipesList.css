@@ -1,0 +1,11 @@
+.recipeList {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 15px 15px;
+}
+
+@media screen and (min-width: 1200px) {
+  .recipeList {
+    margin-top: 85px;
+  }
+}
